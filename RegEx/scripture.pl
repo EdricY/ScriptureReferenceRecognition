@@ -1,11 +1,7 @@
 #!/usr/bin/perl
-use strict;
-use warnings;
- 
-# Print a message.
-if (not defined $ARGV[0]) {
-    die "need filename\n";
-    exit 0;
+if  (not defined $ARGV[0]) {
+  die "need filename\n";
+  exit(0);
 }
 
 my $filename = $ARGV[0];
@@ -15,17 +11,41 @@ open(my $fh, '<:encoding(UTF-8)', $filename)
 
 while (my $row = <$fh>) {
   chomp $row;
-  my $copy = "abcdefghijkl". $row . "end";
-  print ($copy, "\n");
+  if ($row eq "") {
+    next;
+  }
+  print "$row";
+
+
+  # match book
+  $book_p = qr/^\d*\s*[[:alpha:]]+/;
+  my $match = ($row =~ m/$book_p/);
+  if (not $match) {
+    print "\t\t---- missing book\n";
+    next;
+  }
+ $row = $';
+
+  # remove all whitespace
+  $row =~ s/\s+//g;
+  
+  # match ref
+  my $verse_p = qr/\d+(--?\d+)?/;
+  my $verselist_p = qr/$verse_p(,$verse_p)*/;
+  my $vaddr_p = qr/\d+:\d+/;
+  my $addr_p = qr/($vaddr_p--?$vaddr_p)|(\d(:$verselist_p)?)/;
+  my $ref_p = qr/$addr_p(;$addr_p)*/;
+  $match = ($row =~ m/$ref_p/);
+  $row = $';
+
+  # match trans
+  my $trans_p = qr/\([[:alpha:]]+\)/;
+  $match = ($row =~ m/$$trans_p/);
+
+  $row = $';
+  if ($row ne "") {
+    print "\t\t---- unmatched: $row\n";
+    next;
+  }
+  print "\t\t---- good\n";
 }
-  # print "$row" . " ---good\n";
-
-  # my $test = $row;
-
-  # if ($test =~ /1/) {
-  #   printf("%s --- good\n", $row);
-  # } else {
-  #   print "$row" . " --- invalid\n";
-  # }
-}
-
