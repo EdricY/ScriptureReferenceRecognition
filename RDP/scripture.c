@@ -28,7 +28,6 @@ int next() {
     t = nextChar();
     // if (t != EOF && t != 0 && t != "\n" && t != "\r") {
     if (t >= 32) {
-        // printf(" ok:%d ", t);
         while(t == ' ' || t == '\t') t = nextChar();
         if(isalpha(t)) {
             // have N - get rest
