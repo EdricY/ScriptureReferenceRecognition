@@ -1,4 +1,4 @@
-// Generated from D:/git/BibleReferenceRecognition\Scripture.g4 by ANTLR 4.7.2
+// Generated from D:/git/ScriptureReferenceRecognition/ANTLR\Scripture.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -32,7 +32,7 @@ public class ScriptureParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "';'", "':'", "'--'", "','", "'('", "')'"
+			null, "';'", "':'", "'-'", "','", "'('", "')'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -380,10 +380,11 @@ public class ScriptureParser extends Parser {
 	public final AddrContext addr() throws RecognitionException {
 		AddrContext _localctx = new AddrContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_addr);
+		int _la;
 		try {
-			setState(57);
+			setState(60);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
@@ -409,7 +410,17 @@ public class ScriptureParser extends Parser {
 				addrverse();
 				setState(54);
 				match(T__2);
-				setState(55);
+				setState(56);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==T__2) {
+					{
+					setState(55);
+					match(T__2);
+					}
+				}
+
+				setState(58);
 				addrverse();
 				}
 				break;
@@ -456,11 +467,11 @@ public class ScriptureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(59);
+			setState(62);
 			match(DIGIT);
-			setState(60);
+			setState(63);
 			match(T__1);
-			setState(61);
+			setState(64);
 			match(DIGIT);
 			}
 		}
@@ -502,7 +513,7 @@ public class ScriptureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(63);
+			setState(66);
 			match(DIGIT);
 			}
 		}
@@ -547,24 +558,24 @@ public class ScriptureParser extends Parser {
 		VerselistContext _localctx = new VerselistContext(_ctx, getState());
 		enterRule(_localctx, 14, RULE_verselist);
 		try {
-			setState(70);
+			setState(73);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(65);
+				setState(68);
 				verse();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(66);
+				setState(69);
 				verse();
-				setState(67);
+				setState(70);
 				match(T__3);
-				setState(68);
+				setState(71);
 				verselist();
 				}
 				break;
@@ -608,25 +619,36 @@ public class ScriptureParser extends Parser {
 	public final VerseContext verse() throws RecognitionException {
 		VerseContext _localctx = new VerseContext(_ctx, getState());
 		enterRule(_localctx, 16, RULE_verse);
+		int _la;
 		try {
-			setState(76);
+			setState(82);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(72);
+				setState(75);
 				match(DIGIT);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(73);
+				setState(76);
 				match(DIGIT);
-				setState(74);
+				setState(77);
 				match(T__2);
-				setState(75);
+				setState(79);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==T__2) {
+					{
+					setState(78);
+					match(T__2);
+					}
+				}
+
+				setState(81);
 				match(DIGIT);
 				}
 				break;
@@ -668,17 +690,17 @@ public class ScriptureParser extends Parser {
 		TranslationContext _localctx = new TranslationContext(_ctx, getState());
 		enterRule(_localctx, 18, RULE_translation);
 		try {
-			setState(82);
+			setState(88);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__4:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(78);
+				setState(84);
 				match(T__4);
-				setState(79);
+				setState(85);
 				match(NAME);
-				setState(80);
+				setState(86);
 				match(T__5);
 				}
 				break;
@@ -727,13 +749,13 @@ public class ScriptureParser extends Parser {
 		OrdinalContext _localctx = new OrdinalContext(_ctx, getState());
 		enterRule(_localctx, 20, RULE_ordinal);
 		try {
-			setState(86);
+			setState(92);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case DIGIT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(84);
+				setState(90);
 				match(DIGIT);
 				}
 				break;
@@ -758,28 +780,29 @@ public class ScriptureParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\f[\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\fa\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
 		"\f\t\f\3\2\6\2\32\n\2\r\2\16\2\33\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\5\3"+
 		"&\n\3\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\5\5\5\61\n\5\3\6\3\6\3\6\3\6\3"+
-		"\6\3\6\3\6\3\6\3\6\5\6<\n\6\3\7\3\7\3\7\3\7\3\b\3\b\3\t\3\t\3\t\3\t\3"+
-		"\t\5\tI\n\t\3\n\3\n\3\n\3\n\5\nO\n\n\3\13\3\13\3\13\3\13\5\13U\n\13\3"+
-		"\f\3\f\5\fY\n\f\3\f\2\2\r\2\4\6\b\n\f\16\20\22\24\26\2\2\2Y\2\31\3\2\2"+
-		"\2\4%\3\2\2\2\6\'\3\2\2\2\b\60\3\2\2\2\n;\3\2\2\2\f=\3\2\2\2\16A\3\2\2"+
-		"\2\20H\3\2\2\2\22N\3\2\2\2\24T\3\2\2\2\26X\3\2\2\2\30\32\5\4\3\2\31\30"+
-		"\3\2\2\2\32\33\3\2\2\2\33\31\3\2\2\2\33\34\3\2\2\2\34\35\3\2\2\2\35\36"+
-		"\7\2\2\3\36\3\3\2\2\2\37 \5\6\4\2 !\5\b\5\2!\"\5\24\13\2\"#\7\13\2\2#"+
-		"&\3\2\2\2$&\7\13\2\2%\37\3\2\2\2%$\3\2\2\2&\5\3\2\2\2\'(\5\26\f\2()\7"+
-		"\t\2\2)\7\3\2\2\2*\61\5\n\6\2+,\5\n\6\2,-\7\3\2\2-.\5\b\5\2.\61\3\2\2"+
-		"\2/\61\3\2\2\2\60*\3\2\2\2\60+\3\2\2\2\60/\3\2\2\2\61\t\3\2\2\2\62<\5"+
-		"\16\b\2\63\64\5\16\b\2\64\65\7\4\2\2\65\66\5\20\t\2\66<\3\2\2\2\678\5"+
-		"\f\7\289\7\5\2\29:\5\f\7\2:<\3\2\2\2;\62\3\2\2\2;\63\3\2\2\2;\67\3\2\2"+
-		"\2<\13\3\2\2\2=>\7\n\2\2>?\7\4\2\2?@\7\n\2\2@\r\3\2\2\2AB\7\n\2\2B\17"+
-		"\3\2\2\2CI\5\22\n\2DE\5\22\n\2EF\7\6\2\2FG\5\20\t\2GI\3\2\2\2HC\3\2\2"+
-		"\2HD\3\2\2\2I\21\3\2\2\2JO\7\n\2\2KL\7\n\2\2LM\7\5\2\2MO\7\n\2\2NJ\3\2"+
-		"\2\2NK\3\2\2\2O\23\3\2\2\2PQ\7\7\2\2QR\7\t\2\2RU\7\b\2\2SU\3\2\2\2TP\3"+
-		"\2\2\2TS\3\2\2\2U\25\3\2\2\2VY\7\n\2\2WY\3\2\2\2XV\3\2\2\2XW\3\2\2\2Y"+
-		"\27\3\2\2\2\n\33%\60;HNTX";
+		"\6\3\6\3\6\3\6\5\6;\n\6\3\6\3\6\5\6?\n\6\3\7\3\7\3\7\3\7\3\b\3\b\3\t\3"+
+		"\t\3\t\3\t\3\t\5\tL\n\t\3\n\3\n\3\n\3\n\5\nR\n\n\3\n\5\nU\n\n\3\13\3\13"+
+		"\3\13\3\13\5\13[\n\13\3\f\3\f\5\f_\n\f\3\f\2\2\r\2\4\6\b\n\f\16\20\22"+
+		"\24\26\2\2\2a\2\31\3\2\2\2\4%\3\2\2\2\6\'\3\2\2\2\b\60\3\2\2\2\n>\3\2"+
+		"\2\2\f@\3\2\2\2\16D\3\2\2\2\20K\3\2\2\2\22T\3\2\2\2\24Z\3\2\2\2\26^\3"+
+		"\2\2\2\30\32\5\4\3\2\31\30\3\2\2\2\32\33\3\2\2\2\33\31\3\2\2\2\33\34\3"+
+		"\2\2\2\34\35\3\2\2\2\35\36\7\2\2\3\36\3\3\2\2\2\37 \5\6\4\2 !\5\b\5\2"+
+		"!\"\5\24\13\2\"#\7\13\2\2#&\3\2\2\2$&\7\13\2\2%\37\3\2\2\2%$\3\2\2\2&"+
+		"\5\3\2\2\2\'(\5\26\f\2()\7\t\2\2)\7\3\2\2\2*\61\5\n\6\2+,\5\n\6\2,-\7"+
+		"\3\2\2-.\5\b\5\2.\61\3\2\2\2/\61\3\2\2\2\60*\3\2\2\2\60+\3\2\2\2\60/\3"+
+		"\2\2\2\61\t\3\2\2\2\62?\5\16\b\2\63\64\5\16\b\2\64\65\7\4\2\2\65\66\5"+
+		"\20\t\2\66?\3\2\2\2\678\5\f\7\28:\7\5\2\29;\7\5\2\2:9\3\2\2\2:;\3\2\2"+
+		"\2;<\3\2\2\2<=\5\f\7\2=?\3\2\2\2>\62\3\2\2\2>\63\3\2\2\2>\67\3\2\2\2?"+
+		"\13\3\2\2\2@A\7\n\2\2AB\7\4\2\2BC\7\n\2\2C\r\3\2\2\2DE\7\n\2\2E\17\3\2"+
+		"\2\2FL\5\22\n\2GH\5\22\n\2HI\7\6\2\2IJ\5\20\t\2JL\3\2\2\2KF\3\2\2\2KG"+
+		"\3\2\2\2L\21\3\2\2\2MU\7\n\2\2NO\7\n\2\2OQ\7\5\2\2PR\7\5\2\2QP\3\2\2\2"+
+		"QR\3\2\2\2RS\3\2\2\2SU\7\n\2\2TM\3\2\2\2TN\3\2\2\2U\23\3\2\2\2VW\7\7\2"+
+		"\2WX\7\t\2\2X[\7\b\2\2Y[\3\2\2\2ZV\3\2\2\2ZY\3\2\2\2[\25\3\2\2\2\\_\7"+
+		"\n\2\2]_\3\2\2\2^\\\3\2\2\2^]\3\2\2\2_\27\3\2\2\2\f\33%\60:>KQTZ^";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

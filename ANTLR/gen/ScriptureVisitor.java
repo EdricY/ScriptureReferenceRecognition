@@ -1,4 +1,4 @@
-// Generated from D:/git/BibleReferenceRecognition\Scripture.g4 by ANTLR 4.7.2
+// Generated from D:/git/ScriptureReferenceRecognition/ANTLR\Scripture.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**

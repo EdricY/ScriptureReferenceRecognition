@@ -17,7 +17,7 @@ reference
 addr
     : chapter
     | chapter ':' verselist
-    | addrverse '--' addrverse
+    | addrverse '-' '-'? addrverse
     ;
 
 addrverse
@@ -33,7 +33,7 @@ verselist
 
 verse
     : DIGIT
-    | DIGIT '--' DIGIT
+    | DIGIT '-' '-'? DIGIT
     ;
 
 translation
