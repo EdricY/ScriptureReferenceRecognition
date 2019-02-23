@@ -9,6 +9,7 @@ char line[256];
 char *cursor;
 
 char lookahead;
+
 char value[32];
 
 char error = 0;
@@ -42,6 +43,7 @@ int next() {
             return N;
         }
         if(isdigit(t)) {
+            // have D - get rest
             value[ctr++] = t;
             t = nextChar();
             while(isdigit(t)) {
@@ -53,12 +55,11 @@ int next() {
             return D;
         }
         if (t==';' || t==':' || t==',' || t=='(' || t==')') return t;
-        if (t == '-') { //reads '--' but returns '-'
+        if (t == '-') { //can read '--' but returns '-'
             value[ctr++] = t;
             t = nextChar();
             if (t != '-') {
                 ungetChar();
-                return ERR;
             }
             value[ctr++] = t;
             value[ctr] = '\0';
@@ -74,7 +75,9 @@ int next() {
 
 // make sure the current character is c, then advance to next
 void match(char c) {
-    if (lookahead == c) lookahead = next();
+    if (lookahead == c) {
+        lookahead = next();
+    }
     else {
         if (SHOW_ERRORS) {
             if (c == N) {
@@ -132,12 +135,33 @@ parse_addr() {
     parse_chapter();
     if (lookahead == ':') {
         match(':');
-        parse_verselist();
+        parse_versenum();
+        if (lookahead == ',') {
+            match(',');
+            parse_verselist();
+        }
+        else if (lookahead == '-') { //ex. john 1:2-
+            match('-');
+            match(D);
+            if (lookahead == ':') { // D was chapter ex. john 1:2-2:3
+                match(':');
+                parse_versenum();
+            } else { // D was verse ex. john 1:2-3
+                if (lookahead == ',') {
+                    match(',');
+                    parse_verselist();
+                }
+            }
+        }
     }
 }
 
 parse_chapter() {
     match(D);
+}
+
+parse_versenum() {
+    match(D);    
 }
 
 parse_verselist() {
@@ -149,11 +173,17 @@ parse_verselist() {
 }
 
 parse_verse() {
-    match(D);
+    parse_versenum();
     if (lookahead == '-') {
         match('-');
-        match(D);
+        parse_versenum();
     }
+}
+
+parse_verseaddr() {
+    parse_chapter();
+    match(':');
+    parse_versenum();
 }
 
 parse_translation() {
@@ -182,19 +212,9 @@ int main(int argc, char *argv[]) {
         error = 0;
         parse_scripture();
         strtok(line, "\r\n");
-        printf("line: %s", line);
-        if (error == 0) printf(" ---- good!\n");
-        else printf(" ---- invalid!\n");
-        /*
-        lookahead = 1;
-        while (lookahead != EOF) {
-            lookahead = next();
-            if(lookahead == D) printf("D{%s}",value);
-            else if(lookahead == N) printf("N{%s}",value);
-            else if(lookahead == ERR) printf("*ERR*");
-            else printf("%c", lookahead);
-        }
-        */
+        printf("%s", line);
+        if (error == 0) printf("\t\t---- good\n");
+        else printf("\t\t---- invalid\n");
     }
     fclose(file);
     printf("\nBye!\n");
