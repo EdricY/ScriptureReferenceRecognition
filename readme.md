@@ -1,4 +1,4 @@
-**A01 - Language Recognition**
+# A01 - Language Recognition
 
 
 Submission Tree
@@ -204,7 +204,3 @@ Feel free to provide any feedback on how much you learned from doing the assignm
 
 This was fun! It would've been nice to have a set of tests to know exactly what the program should do
 (If you want to start compiling one, I have no problems with you using mine).
-
-
-
-<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js?"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
